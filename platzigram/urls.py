@@ -1,14 +1,14 @@
 
 from django.urls import path
-from django.http import HttpResponse
+from platzigram import views
 
-
-def hello_world(request):
-    return HttpResponse('hola mundo por ruber hernadez')
 
 
 urlpatterns = [
 
-    path('hello-word/', hello_world)
+    path('hello-word/', views.hello_world),
+    path('sorted/', views.sort_intergers),
+    path('hi/<str:name>/<int:age>/', views.say_hi),
+
 
 ]
