@@ -21,12 +21,9 @@ class ProfileCompletionMiddleware:
         if not request.user.is_anonymous:
             if not request.user.is_staff:
                 profile = request.user.profile
-                print('*'* 20)
-                print(profile)
                 if not profile.picture or not profile.biography:
-                    if request.path not in [reverse('update_profile'), reverse('logout')]: # reverse = apartir de un nombre vuelve la url
-                        return redirect('update_profile')
+                    if request.path not in [reverse('users:update'), reverse('users:logout')]:
+                        return redirect('users:update')
 
         response = self.get_response(request)
-        
         return response
